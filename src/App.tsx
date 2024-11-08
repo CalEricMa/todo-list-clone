@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Quote from './Quote';
 import './App.css';
 
 interface Task {
@@ -15,7 +16,7 @@ function App() {
     { id: 2, title: 'Completed Task', completed: true, important: false },
   ]);
   const [taskTitle, setTaskTitle] = useState('');
-  const [view, setView] = useState('all'); // Track which view to display: 'all' or 'important'
+  const [view, setView] = useState('all');
 
   const handleAddTask = () => {
     if (taskTitle) {
@@ -28,6 +29,10 @@ function App() {
     setTasks(tasks.map(task =>
       task.id === id ? { ...task, important: !task.important } : task
     ));
+  };
+
+  const handleDeleteTask = (id: number) => {
+    setTasks(tasks.filter(task => task.id !== id));
   };
 
   const displayedTasks = view === 'important' ? tasks.filter(task => task.important) : tasks;
@@ -63,6 +68,9 @@ function App() {
             </div>
           </header>
 
+          {/* Quote Component */}
+          <Quote />
+
           {/* Task Input and List */}
           <div className="task-section">
             <div className="task-input">
@@ -95,6 +103,12 @@ function App() {
                     onClick={() => toggleImportant(task.id)}
                   >
                     {task.important ? 'Unmark Important' : 'Mark Important'}
+                  </button>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDeleteTask(task.id)}
+                  >
+                    Delete
                   </button>
                 </div>
               ))}

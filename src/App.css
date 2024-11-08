@@ -164,3 +164,37 @@ body, .app {
   color: #fff;
 }
 
+.delete-btn {
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.delete-btn:hover {
+  background-color: #ff3333;
+}
+
+.quote-container {
+  margin: 20px;
+  padding: 15px;
+  border-left: 4px solid #0078d4;
+  background-color: #f0f8ff;
+  font-style: italic;
+  max-width: 500px;
+}
+
+.quote-text {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.quote-author {
+  text-align: right;
+  font-size: 1rem;
+  color: #555;
+}
+
